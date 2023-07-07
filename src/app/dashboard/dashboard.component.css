@@ -1,0 +1,38 @@
+td,th{
+   text-align: center; 
+}
+
+img{
+    width: 100%;
+}
+
+ul.pagination {
+    display: inline-block;
+}
+.clickable{
+    cursor: pointer;
+}
+a{
+    margin-right: 2px;
+}
+.centrer{
+    text-align: center;
+}
+option{
+    text-align: center;
+    width: 30px;
+}
+.select{
+    width: 5%;
+    text-align: center;
+    margin-left: 1px ;
+}
+.label{
+    color: black;
+}
+.col-md-3{
+    margin-left: 100px;
+}
+.sp{
+    margin-top: 20px;
+}

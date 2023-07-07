@@ -1,0 +1,43 @@
+<div class="container">
+    <img src="./assets/img/marsa.png" class="img">
+    <div class="card">
+        <div class="card-header card-header-danger">
+            <h4 class="card-title">Inscription</h4>
+        </div>
+        <div class="card-body">
+            <div class="row pos">
+                <p class="text-danger">{{errorMessage}}</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="nom">Nom: </label>
+                    <input matInput type="text" id="nom" name="nom" [(ngModel)]="user.nom" required/>
+                </div>
+                <div class="col-md-6">
+                    <label for="prenom">Prénom: </label>
+                    <input matInput type="text" id="prenom" name="prenom" [(ngModel)]="user.prenom" required/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="username">Username: </label>
+                    <input matInput type="text" id="username" name="username" [(ngModel)]="user.username" required/>
+                </div>
+                <div class="col-md-6">
+                    <label for="password">Password: </label>
+                    <input matInput type="password" id="password" name="password" [(ngModel)]="user.password" required/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <span style="margin: 0px 65px"></span>
+                    <button (click)="goBack()" class="btn btn-danger">Retour</button>
+                    <span style="margin: 0px 0px 0px 30px"></span>
+                    <button mat-raised-button type="button" class="btn btn-primary" (click)="SignUp()">S'inscrire</button>
+                </div>    
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

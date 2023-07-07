@@ -1,0 +1,55 @@
+<div><br><br><br></div>
+<div class="row justify-content-center">
+    <div class="col-lg-9 col-md-9 justify-content-center c">
+        <div class="card">
+            <div class="card-header card-header-warning">
+                <h4 class="card-title">Liste des affectations</h4>
+                <p class="card-category">Affectation des engins de la societe Marsa Maroc</p>
+            </div>
+            <div class="card-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="text-warning">
+                        <th>Num Affectation</th>
+                        <th>Date de sortie d'engin</th>
+                        <th>Date d'entrée de l'engin</th>
+                        <th>Type D'engin</th>
+                        <th>Observation de sortie</th>
+                        <th>Observation d'entrée</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of affectations?.content">
+                            <td>{{a.idA}}</td>
+                            <td>{{a.dateS}}</td>
+                            <td>{{a.dateE}}</td>
+                            <td>{{a.engin.nomEngin}}</td>
+                            <td>{{a.observationS}}</td>
+                            <td>{{a.observationE}}</td>
+                            <td>
+                                <a (click)="openWindow(a.idA)"><i class="material-icons bi-card-list clickable">edit</i></a>
+                                <a (click)="openModal(a.idA)"><i class="material-icons bi-card-list clickable">delete</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="centrer">
+    <nav aria-label="Page navigation example">
+        <ul *ngFor="let p of pages; let i=index" class="pagination">
+            <li [ngClass]="{active:i==currentPageA}" class="page-item inline"><a class="page-link clickable" (click)="goTopageAffect(i)">{{i+1}}</a></li>
+        </ul>
+    </nav> 
+</div>
+<div class="modal-overlay" *ngIf="showModal==true">
+    <div class="modal-content">
+      <app-confirm-supp [idE]="idE" [idAff]="idAff" (closeModal)="closeModal()"></app-confirm-supp>
+    </div>
+</div>
+<div class="modal-overlay" *ngIf="showWindow==true">
+    <div class="modal-content">
+      <app-update-affectation [idAff]="idAff" (closeWindow)="closeWindow()"></app-update-affectation>
+    </div>
+</div>

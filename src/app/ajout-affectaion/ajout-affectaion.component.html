@@ -1,0 +1,87 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <app-infos></app-infos>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title ">Détails</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Demande
+                                    </th>
+                                    <th>
+                                        Entité
+                                    </th>
+                                    <th>
+                                        Poste
+                                    </th>
+                                    <th>
+                                        Shift
+                                    </th>
+                                    <th>
+                                        Date de sortie
+                                    </th>
+                                    <th>
+                                        Date de création
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{demande?.user?.username}}</td>
+                                        <td>{{demande?.poste?.entite?.codeEntite}}</td>
+                                        <td>{{demande?.poste?.codePoste}}</td>
+                                        <td>{{demande?.shift?.codeShift}}</td>
+                                        <td>{{demande?.dateS}}</td>
+                                        <td>{{demande?.dateC}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title ">Famille demandée</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="text-primary">
+                                    <th>Nom de la famille</th>
+                                    <th>Quantité</th>
+                                    <th>Remarque</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <td>{{details?.famille.nomFamille}}</td>
+                                    <td>{{details?.quantite}}</td>
+                                    <td>{{details?.observation}}</td>
+                                    <td><a (click)="openModal()" class="clickable"><i class="material-icons">agriculture</i></a></td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-overlay" [hidden]="!showModal">
+            <app-infos-engins [famille]="famille" [quantite]="quantite" (closeModal)="closeModal()" (sendEngins)="receiveEngins($event)"></app-infos-engins>
+        </div>
+
+        <app-list-control [engins]="engins" (enginUpdated)="onEnginUpdated($event)" (affecterClicked)="onAffecterClicked($event)"></app-list-control>
+
+        <div class="modal-overlay" *ngIf="showAff">
+            <div class="modal-content">
+              <app-infos-affectation [details]="details" [engin]="engin" (closeWindow)="closeWindow()" (Affectation)="affecter($event)"></app-infos-affectation>
+            </div>
+        </div>
+          
+    </div>
+</div>

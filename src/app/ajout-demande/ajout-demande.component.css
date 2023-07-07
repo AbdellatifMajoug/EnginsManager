@@ -1,0 +1,8 @@
+.col-md-3{
+    margin-left: 100px;
+}
+
+.pos {
+    display: flex;
+    justify-content: center;
+  }

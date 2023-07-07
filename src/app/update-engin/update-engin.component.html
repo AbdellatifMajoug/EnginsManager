@@ -1,0 +1,52 @@
+<div class="card">
+    <div class="card-header card-header-danger">
+        <h4 class="card-title">Affectation d'engins</h4>
+    </div>
+    <div class="card-body">
+        <div class="row pos">
+            <p class="text-danger">{{errorMessage}}</p>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="matricule">Matricule: </label>
+                <input matInput type="nymber" id="matricule" name="matricule" [value]="engin?.idE" disabled/>
+            </div>
+            <div class="col-md-6" *ngIf="engin">
+                <label for="nomE">Type d'engin: </label>
+                <input matInput type="text" id="nomE" name="nomE" [(ngModel)]="engin.nomEngin"/>
+            </div>
+        </div>
+        <div class="row" *ngIf="engin">
+            <div class="col-md-6">
+                <label for="compteur">Compteur(valeur actuelle): </label>
+                <input matInput type="number" id="compteur" name="compteur" [(ngModel)]="engin.compteur"/>
+            </div>
+            <div class="col-md-6">
+                <label for="capacite">Capacite </label>
+                <input matInput type="number" id="capacite" name="capacite" [(ngModel)]="engin.capacite"/>                   
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="etat">Etat: </label>
+                <input matInput type="text" id="etat" name="etat" value="Affecté" *ngIf="engin?.sortie===true"  disabled/>
+                <input matInput type="text" id="etat" name="etat" value="Disponible" *ngIf="engin?.sortie===false" disabled/>
+            </div>
+            <div class="col-md-6">
+                <label for="famille">Famille: </label>
+                <input matInput type="text" id="famille" name="famille" [value]="engin?.famille?.nomFamille" disabled/>
+            </div>
+        </div>     
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <button mat-raised-button type="button" class="btn btn-danger" (click)="close()">Fermer</button>
+            </div>
+            <div class="col-md-3">
+                <button mat-raised-button type="button" class="btn btn-primary" (click)="updateEngin()">Affecter</button>
+            </div>
+        </div> 
+        <div class="clearfix"></div>
+    </div>
+</div>
+

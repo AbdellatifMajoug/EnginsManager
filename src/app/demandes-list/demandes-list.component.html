@@ -1,0 +1,76 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <app-infos></app-infos>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Demandes déposées</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        NumBCI
+                                    </th>
+                                    <th>
+                                        Demande
+                                    </th>
+                                    <th>
+                                        Entité
+                                    </th>
+                                    <th>
+                                        Poste
+                                    </th>
+                                    <th>
+                                        Etat
+                                    </th>
+                                    <th>
+                                        Actions
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let dem of demandes?.content">
+                                        <td>
+                                            {{dem?.numBCI}}
+                                        </td>
+                                        <td>
+                                            {{dem?.user.username}}
+                                        </td>
+                                        <td>
+                                            {{dem?.poste.entite.codeEntite}}
+                                        </td>
+                                        <td>
+                                            {{dem?.poste.codePoste}}
+                                        </td>
+                                        <td *ngIf="dem.etat==false">
+                                            Non traîtée
+                                        </td>
+                                        <td *ngIf="dem.etat==true">
+                                            Clôturée
+                                        </td>
+                                        <td *ngIf="dem.etat==false">
+                                            <button mat-raised-button (click)="Affectation(dem?.numBCI)" type="submit" class="btn btn-success">Traiter </button>
+                                        </td>
+                                        <td *ngIf="dem.etat==true">
+                                            <button mat-raised-button type="submit" class="btn btn-danger" disabled>Clôturée</button>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="centrer">
+            <nav aria-label="Page navigation example">
+                <ul *ngFor="let p of pages; let i=index" class="pagination">
+                    <li [ngClass]="{active:i==currentPageD}" class="page-item inline"><a class="page-link clickable" (click)="goTopageDemandes(i)">{{i+1}}</a></li>
+                </ul>
+            </nav> 
+        </div>
+    </div>
+</div>

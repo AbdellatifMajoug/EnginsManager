@@ -1,0 +1,31 @@
+.bg {
+    margin-top: 100px;
+    background: url('../../assets/img/marsa-login.jpeg');
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    position: relative;
+  }
+  
+.card{
+    margin-top: 100px;
+}
+img{
+    height: 100px;
+    margin-top: 50px;
+    margin-left: 140px;
+    margin-bottom: -80px;
+}
+.btn{
+    text-align: center;
+}
+.pos {
+    display: flex;
+    justify-content: center;
+  }
+  .link{
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 5px;
+  }

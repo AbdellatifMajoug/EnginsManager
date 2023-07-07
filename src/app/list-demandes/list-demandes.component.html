@@ -1,0 +1,35 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <app-infos></app-infos>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-12" *ngFor="let demande of demandes?.content">
+                <div class="card">
+                    <div *ngIf="demande.etat==true" class="card-header card-header-success">
+                        <h4 class="card-title">N° {{demande.numBCI}} - Date de la demande : {{demande.dateS}}</h4>
+                        <p class="card-category">Demandes d'emprunt de l'engin</p>
+                        <button (click)="Details(demande.numBCI)" mat-raised-button type="submit" class="btn pull-right">Détails</button>
+                    </div>
+                    <div *ngIf="demande.etat==false" class="card-header card-header-danger">
+                        <h4 class="card-title">N° {{demande.numBCI}} - Date de la demande : {{demande.dateS}}</h4>
+                        <p class="card-category">Demandes d'emprunt de l'engin</p>
+                        <a (click)="openModal(demande.numBCI)"><i class="material-icons bi-card-list clickable">delete</i></a>
+                        <button (click)="Details(demande.numBCI)" mat-raised-button type="submit" class="btn pull-right">Détails</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="centrer">
+            <nav aria-label="Page navigation example">
+                <ul *ngFor="let p of pages; let i=index" class="pagination">
+                    <li [ngClass]="{active:i==currentPageD}" class="page-item inline"><a class="page-link clickable" (click)="goTopageDemandes(i)">{{i+1}}</a></li>
+                </ul>
+            </nav> 
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showModal==true">
+    <div class="modal-content">
+      <app-confirm-supp [numBCI]="numBCI" (closeModal)="closeModal()"></app-confirm-supp>
+    </div>
+</div>

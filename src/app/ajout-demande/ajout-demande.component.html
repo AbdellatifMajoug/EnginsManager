@@ -1,0 +1,105 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row justify-content-center" *ngIf="show==0 || show==1" >
+      <div class="col-md-8">
+          <div class="card">
+              <div class="card-header card-header-danger">
+                  <h4 class="card-title">Ajouter une demande</h4>
+              </div>
+              <div class="card-body">
+                <div class="row pos">
+                    <p class="text-danger">{{errorMessage}}</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="entité">Entités: </label>
+                        <select class="custom-select mr-sm-2" name="entité" [(ngModel)]="nouvelleDemande?.entite.id" 
+                                    (change)="findPostes(nouvelleDemande.entite.id)" required>
+                            <option *ngFor="let entite of entites" [value]="entite.id">{{ entite.nomEntite }}</option>
+                          </select>                                      
+                    </div>
+                    <div class="col-md-6">
+                    <label for="Poste"> Poste: </label>
+                    <select class="custom-select mr-sm-2" name="Poste" [ngModel]="nouvelleDemande?.poste.id" required>
+                        <option *ngFor="let poste of postes" [value]="poste.id" selected>{{ poste.codePoste }}</option>
+                      </select>                                      
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                            <label for="date">Date de sortie</label>
+                            <input matInput type="date" name="date" [(ngModel)]="nouvelleDemande.dateS" required/>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="Shifts">Shifts : </label>
+                        <select class="custom-select mr-sm-2" name="Shifts" [(ngModel)]="nouvelleDemande?.shift.idS" required>
+                            <option *ngFor="let shift of shifts" [value]="shift.idS">{{ shift.codeShift }}</option>
+                          </select>                                      
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <button mat-raised-button (click)="addDemande()" type="submit" class="btn btn-primary">Continuer</button>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+        </div>
+    </div>
+  </div>
+</div>  
+  
+  <div class="row justify-content-center" *ngIf="show==1" >
+      <div class="col-md-8">
+          <div class="card">
+              <div class="card-header card-header-danger">
+                  <h4 class="card-title">Détails</h4>
+              </div>
+              <div class="card-body">
+                <div class="row pos">
+                    <p class="text-danger">{{error}}</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="familles">Familles d'engins: </label>
+                        <select class="custom-select mr-sm-2" name="familles" [(ngModel)]="detailsDemande.famille.idF"
+                        (change)="onChange(detailsDemande.famille.idF)" required>
+                            <option *ngFor="let famille of familles" [value]="famille.idF">{{ famille.nomFamille }}</option>
+                          </select>                                      
+                    </div>
+                    <div class="col-md-6">
+                        <label for="familles"> Type d'engins: </label>
+                        <select class="custom-select mr-sm-2" name="familles" required>
+                            <option *ngFor="let engin of enginsByFam" [value]="engin.idE" disabled selected>{{ engin.nomEngin }}</option>
+                          </select>                                      
+                    </div>
+                    <div class="row sp">
+                        <div class="col-md-3">
+                            <mat-form-field class="example-full-width">
+                                <label for="quantité">Quantité</label>
+                                <input matInput type="number" name="quantité" [(ngModel)]="detailsDemande.quantite">
+                            </mat-form-field>
+                        </div>   
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                               <textarea matInput placeholder="Raison de la demande" [(ngModel)]="detailsDemande.observation" required></textarea>
+                             </mat-form-field>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input type="hidden">
+                            </div>
+                            <div class="col-md-3">
+                                <button mat-raised-button (click)="addDetail()" type="submit" class="btn btn-primary">Confirmer</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div> 
+  </div>
+</div>

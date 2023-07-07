@@ -1,0 +1,26 @@
+<div class="bg">
+    <div class="container mt-12">
+      <div class="col-md-6 offset-md-3">
+        <img src="./assets/img/marsa.png">
+        <div class="card">
+          <div class="card-header">Authentication</div>
+          <div class="text-danger pos" *ngIf="errorMessage">{{errorMessage}}</div>
+          <div class="card-body">
+            <form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm)">
+              <div class="mb-3">
+                <label class="form-label" for="userName">Username</label>
+                <input type="text" ngModel name="userName" id="userName" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="userPassword">Password</label>
+                <input type="password" ngModel name="userPassword" id="userPassword" class="form-control" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Se connecter</button><br>
+              <a class="link" routerLink="/registration">S'inscrire</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

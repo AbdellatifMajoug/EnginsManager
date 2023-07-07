@@ -1,0 +1,43 @@
+<div class="row pos">
+    <div class="col-md-10 center">
+        <div class="card">
+            <div class="card-header card-header-success">
+                <h4 class="card-title ">Controle d'engins</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <th *ngFor="let engin of engins">
+                                <a (click)="getCriteres(engin)" [ngClass]="{'selected': engin === selectedEngin}" class="clickable">
+                                    {{ engin.nomEngin }}
+                                </a>
+                            </th>
+                            <tr *ngIf="show==1"><td></td><td><img [src]="eng.imageUrl"></td><td></td></tr>
+                            <tr *ngIf="show==1" class="text-primary">
+                                <th>Critère</th>
+                                <th>Etat</th>
+                                <th>Remarque</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let critere of eng?.criteres" colspan="2">
+                                <td>
+                                  <i class="material-icons text-danger custom-class" *ngIf="critere.critique==true">warning</i> {{critere.nomCritere}}
+                                </td>                                                                    
+                                <td>
+                                  Oui <input type="radio" [name]="critere.nomCritere" (change)="updateEtat(critere, true)" value="true" [checked]="critere.etat==true"/>
+                                  Non <input type="radio" [name]="critere.nomCritere" (change)="updateEtat(critere, false)" value="false" [checked]="critere.etat==false"/>
+                                </td>
+                                <td><input type="text"></td>
+                            </tr>                              
+                            <tr>
+                                <td></td><td *ngIf="show==1"><button class="btn btn-primary" (click)="affecterClick(eng)" [disabled]="disabled">Affecter</button></td><td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

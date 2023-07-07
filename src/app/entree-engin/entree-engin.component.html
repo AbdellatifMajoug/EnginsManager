@@ -1,0 +1,60 @@
+<div class="card">
+    <div class="card-header card-header-danger">
+        <h4 class="card-title">Entrée d'engin</h4>
+    </div>
+    <div class="card-body">
+        <div class="row pos">
+            <p class="text-danger">{{errorMessage}}</p>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="nom">Nom: </label>
+                <input matInput type="text" id="nom" name="nom" [value]="details?.demande?.user?.nom" disabled/>
+            </div>
+            <div class="col-md-6">
+                <label for="prenom">Prenom: </label>
+                <input matInput type="text" id="prenom" name="prenom" [value]="details?.demande?.user?.prenom" disabled/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="nomE">Entite: </label>
+                <input matInput type="text" id="nomE" name="nomE" [value]="details?.demande?.poste?.entite?.codeEntite" disabled/>
+            </div>
+            <div class="col-md-6">
+                <label for="engin">Type d'engin: </label>
+                <input matInput type="text" id="engin" name="engin" [value]="affectation?.engin?.nomEngin" disabled/>                   
+            </div>
+        </div>
+        <div class="row" *ngIf="affectation">
+            <div class="col-md-6">
+                <label for="compteur">Compteur à l'entrée(valeur actuelle): </label>
+                <input matInput type="number" id="compteur" name="compteur" [(ngModel)]="affectation.compteurE"/>
+            </div>
+            <div class="col-md-6">
+                <label for="observation">Observation d'entrée: </label>
+                <input matInput type="text" id="observation" name="engin" [(ngModel)]="affectation.observationE"/>
+            </div>
+        </div> 
+        <div class="row" *ngIf="affectation">
+            <div class="col-md-6">
+                <label for="dateS">Date de sortie: </label>
+                <input matInput type="date" id="dateS" name="dateS" [(ngModel)]="affectation.dateS" disabled/>
+            </div>
+            <div class="col-md-6">
+                <label for="dateE">Date d'entrée: </label>
+                <input matInput type="date" id="dateE" name="dateE" [(ngModel)]="affectation.dateE"/>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-3">
+                    <button mat-raised-button type="button" class="btn btn-danger" (click)="close()">Fermer</button>
+                </div>
+                <div class="col-md-3">
+                    <button mat-raised-button type="button" class="btn btn-primary" (click)="Entrer(affectation)">Confirmer</button>
+                </div>
+            </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+

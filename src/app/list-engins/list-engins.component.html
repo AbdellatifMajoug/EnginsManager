@@ -1,0 +1,64 @@
+<div *ngIf="userService.roleMatch('Assistant')"><br><br><br></div>
+<div class="row justify-content-center">
+    <div class="col-lg-9 col-md-9 justify-content-center c">
+        <div class="card">
+            <div class="card-header card-header-warning">
+                <h4 class="card-title">Liste des engins</h4>
+                <p class="card-category">Engins de la societe Marsa Maroc</p>
+            </div>
+            <div class="card-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="text-warning">
+                        <th>Num</th>
+                        <th>Nom</th>
+                        <th>capacité</th>
+                        <th>compteur</th>
+                        <th>Photo</th>
+                        <th *ngIf="userService.roleMatch('Assistant')">Actions</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let e of engins?.content">
+                            <td>{{e.idE}}</td>
+                            <td>{{e.nomEngin}}</td>
+                            <td>{{e.capacite}}</td>
+                            <td>{{e.compteur}}</td>
+                            <td><img [src]="e.imageUrl"></td>
+                            <td *ngIf="userService.roleMatch('Assistant')">
+                                <a (click)="openWindow(e.idE)"><i class="material-icons bi-card-list clickable">edit</i></a>
+                                <a (click)="openModal(e.idE)"><i class="material-icons bi-card-list clickable">delete</i></a>
+                                <a (click)="openAff(e)" *ngIf="e.sortie===true"><i class="material-icons bi-card-list clickable">update</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="centrer">
+    <nav aria-label="Page navigation example">
+        <ul *ngFor="let p of pages; let i=index" class="pagination">
+            <li [ngClass]="{active:i==currentPageE}" class="page-item inline"><a class="page-link clickable" (click)="goTopageEngins(i)">{{i+1}}</a></li>
+        </ul>
+    </nav> 
+</div>
+<div class="modal-overlay" *ngIf="userService.roleMatch('Assistant') && showModal==true">
+    <div class="modal-content">
+      <app-confirm-supp [idE]="idE" (closeModal)="closeModal()"></app-confirm-supp>
+    </div>
+</div>
+<div class="modal-overlay" *ngIf="userService.roleMatch('Assistant') && showWindow==true">
+    <div class="modal-content">
+      <app-update-engin [idE]="idE" (closeWindow)="closeWindow()"></app-update-engin>
+    </div>
+</div>
+<div class="modal-overlay" *ngIf="userService.roleMatch('Assistant') && showAff==true">
+    <div class="modal-content">
+      <app-control-entree [engin]="engin" (closeModal)="closeAff()" (confirmed)="sendIdE($event)"></app-control-entree>
+    </div>
+</div>
+<div class="modal-overlay" *ngIf="userService.roleMatch('Assistant') && showModalAff==true">
+    <div class="modal-content">
+      <app-entree-engin [idE]="idE" (closeModalAff)="closeModalAff()"></app-entree-engin>
+    </div>
+</div>

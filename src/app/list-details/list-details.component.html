@@ -1,0 +1,103 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Détails de la demande</h4>
+                        <p class="card-category">Demandeur : <b>{{demande?.user.nom}}</b></p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        NumBCI
+                                    </th>
+                                    <th>
+                                        Demandeur
+                                    </th>
+                                    <th>
+                                        Date de sortie prévue
+                                    </th>
+                                    <th>
+                                        Date de création
+                                    </th>
+                                    <th>
+                                        Shift
+                                    </th>
+                                    <th>
+                                        Entité
+                                    </th>
+                                    <th>
+                                        Poste
+                                    </th>
+                                    <th>
+                                        Etat
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {{demande?.numBCI}}
+                                        </td>
+                                        <td>
+                                            {{demande?.user.username}}
+                                        </td>
+                                        <td>
+                                            {{demande?.dateS}}
+                                        </td>
+                                        <td>
+                                            {{demande?.dateC}}
+                                        </td>
+                                        <td>
+                                            {{demande?.shift.codeShift}}
+                                        </td>
+                                        <td>
+                                            {{demande?.poste.entite.codeEntite}}
+                                        </td>
+                                        <td>
+                                            {{demande?.poste.codePoste}}
+                                        </td>
+                                        <td>
+                                            {{demande?.etat}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-12 justify-content-center c">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Familles demandées</h4>
+                        <p class="card-category">Familles d'engins de la societe Marsa Maroc</p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th>Nom de la famille</th>
+                                <th>Quantité</th>
+                                <th>Remarque</th>
+                            </thead>
+                            <tbody>
+                                <td>{{details?.famille.nomFamille}}</td>
+                                <td>{{details?.quantite}}</td>
+                                <td>{{details?.observation}}</td>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-2 col-md-12 justify-content-center c">
+                <button (click)="goBack()" class="btn btn-primary">Retour</button>
+            </div>
+        </div>
+    </div>
+</div>

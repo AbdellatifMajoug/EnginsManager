@@ -1,0 +1,38 @@
+.card {
+    width: 100%;
+    margin-top: 100px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.row > div {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+}
+
+.pos {
+    display: flex;
+    justify-content: center;
+  }
+  
+input {
+    width: 100%;
+    display: block;
+}
+
+img{
+    display: flex;
+    height: 100px;
+    margin-top: 50px;
+    margin-left: 370px;
+    margin-bottom: -60px;
+}

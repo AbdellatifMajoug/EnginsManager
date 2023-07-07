@@ -1,0 +1,13 @@
+.disabled-link {
+    pointer-events: none; 
+  }
+  
+  .colorItem{
+    font-weight: bold;
+    margin-bottom: -22px;
+  }
+  .username{
+    margin-top: 2px;
+    display: flex;
+    justify-content: center;
+  }
